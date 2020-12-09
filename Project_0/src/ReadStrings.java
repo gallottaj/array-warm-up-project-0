@@ -28,11 +28,10 @@ public class ReadStrings {
 			String[] wordsArray = words.toArray(new String[0]);
 			
 			for (String s : wordsArray) {
-				//use to test
-				//System.out.println(s);
+			//unsorted System.out.println(s);
 			}
 			
-		//implement bubble sort to sort by alphabetical order
+			//implement bubble sort to sort by alphabetical order
 			for (int j = 0; j < wordsArray.length; j++) {
 				for (int i = j + 1; i < wordsArray.length; i++) {
 					if (wordsArray[i].compareTo(wordsArray[j]) < 0) {
@@ -43,5 +42,35 @@ public class ReadStrings {
 				}
 				System.out.println(wordsArray[j]);
 			}	
+				
+		//binary search
+		//grab user input
+			Scanner scan = new Scanner(System.in);
+			//System.out.println("Enter a word");
+			
+			String userInput = scan.next();
+			
+			//test
+			//System.out.println("You entered the word " + userInput + ", " + "right?");
+
+			int lowestIndex = 0;
+			int highestIndex = wordsArray.length-1; //6
+			int middleIndex = 0;
+			
+			while(lowestIndex<=highestIndex) {
+				middleIndex = (lowestIndex+highestIndex)/2;
+				
+			if(userInput.compareTo(wordsArray[middleIndex]) < 0) {
+				lowestIndex = middleIndex+1;
+			}else if (userInput.compareTo(wordsArray[middleIndex]) > 0) {
+				highestIndex = middleIndex - 1;
+			}else {
+				break;
+			}if(lowestIndex > highestIndex) {
+				System.out.println("-1");
+			}else {
+				System.out.println("found at" + middleIndex);
+			}
+		}		
 	}
 }
